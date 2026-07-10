@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1>{{ recipe.title }}</h1>
+
+    <p><strong>Category:</strong> {{ recipe.category }}</p>
+
+    <p>{{ recipe.description }}</p>
+
+    <hr>
+
+    <h3>Ingredients</h3>
+
+    <pre>{{ recipe.ingredients }}</pre>
+
+    <h3>Instructions</h3>
+
+    <pre>{{ recipe.instructions }}</pre>
+
+    <hr>
+
+    <p>⏱ Total Time: {{ recipe.total_time }} mins</p>
+
+    <p>🍽 Servings: {{ recipe.servings }}</p>
+
+    <p>🔥 Calories: {{ recipe.calories }} kcal</p>
+
+    <p>⭐ Difficulty: {{ recipe.difficulty }}</p>
+
+</div>
+
+{% endblock %}
