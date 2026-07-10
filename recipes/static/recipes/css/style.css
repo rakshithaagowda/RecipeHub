@@ -263,3 +263,180 @@ margin:auto;
 .category-card:hover p{
     color:#212529 !important;
 }
+/* ==========================================
+   PREMIUM UI ENHANCEMENTS
+========================================== */
+
+/* Smooth transition */
+
+*{
+    transition: all .3s ease;
+}
+
+/* Sticky Navbar */
+
+.navbar{
+
+    padding:14px 0;
+
+    background:rgba(30,30,30,.75);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    z-index:999;
+}
+
+.navbar-brand{
+
+    font-size:30px;
+
+    letter-spacing:.5px;
+}
+
+.nav-link{
+
+    font-weight:500;
+
+    position:relative;
+}
+
+/* Animated underline */
+
+.nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:3px;
+
+    border-radius:20px;
+
+    background:#ffc107;
+
+    transition:.35s;
+}
+
+.nav-link:hover::after{
+
+    width:100%;
+}
+
+/* Hero */
+
+.hero{
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    top:-120px;
+
+    right:-100px;
+
+    filter:blur(10px);
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+
+    height:250px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    bottom:-80px;
+
+    left:-70px;
+}
+
+/* Hero Image */
+
+.hero-image{
+
+    animation:floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* Cards */
+
+.recipe-card{
+
+    overflow:hidden;
+}
+
+.recipe-card:hover{
+
+    transform:translateY(-12px) scale(1.02);
+}
+
+.category-card:hover{
+
+    transform:translateY(-10px) scale(1.03);
+}
+
+/* Badge */
+
+.badge{
+
+    border-radius:30px;
+
+    padding:8px 14px;
+
+    font-weight:600;
+}
+
+/* Footer (future ready) */
+
+footer{
+
+    background:#222;
+
+    color:white;
+
+    padding:60px 0;
+}

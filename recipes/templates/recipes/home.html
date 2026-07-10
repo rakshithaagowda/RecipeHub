@@ -54,57 +54,74 @@
 
     <div class="container">
 
-        <div class="row align-items-center">
+        <div class="row align-items-center gy-5">
 
-            <div class="col-lg-6">
+            <!-- Left Content -->
 
-                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
-                    🔥 Welcome to RecipeHub
+            <div class="col-lg-6" data-aos="fade-right">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3 shadow-sm">
+                    🔥 Trending Recipes Everyday
                 </span>
 
-                <h1>
-                    Discover
-                    <span>Delicious Recipes</span>
-                    For Every Occasion
+                <h1 class="display-3 fw-bold mb-4">
+                    Cook Like a
+                    <span>Professional Chef</span>
                 </h1>
 
-                <p>
-                    Explore hundreds of tasty recipes, save your favorites,
-                    and cook like a professional chef from your own kitchen.
+                <p class="lead text-white mb-4">
+                    Discover hundreds of mouth-watering recipes from around the
+                    world. From healthy breakfasts to delicious desserts,
+                    RecipeHub helps you cook with confidence.
                 </p>
 
                 <!-- Search -->
 
-                <div class="input-group search-box mt-4 mb-4">
+                <div class="input-group search-box mb-4">
 
                     <input
                         type="text"
                         class="form-control"
-                        placeholder="Search recipes...">
+                        placeholder="Search recipes, ingredients...">
 
                     <button class="btn btn-warning">
-                        🔍
+                        <i class="fas fa-search"></i>
                     </button>
+
+                </div>
+
+                <!-- Popular Tags -->
+
+                <div class="mb-4">
+
+                    <small class="text-white-50 d-block mb-2">
+                        Popular Searches
+                    </small>
+
+                    <span class="badge rounded-pill bg-light text-dark me-2">🍕 Pizza</span>
+                    <span class="badge rounded-pill bg-light text-dark me-2">🍝 Pasta</span>
+                    <span class="badge rounded-pill bg-light text-dark me-2">🥗 Salad</span>
+                    <span class="badge rounded-pill bg-light text-dark">🍰 Dessert</span>
 
                 </div>
 
                 <!-- Buttons -->
 
-                <div class="hero-buttons">
+                <div class="hero-buttons mb-5">
 
                     <a href="#featured" class="btn btn-warning btn-lg me-3">
                         Explore Recipes
                     </a>
 
-                    <a href="/admin/" class="btn btn-outline-light btn-lg">
-                        Admin
+                    <a href="#categories" class="btn btn-outline-light btn-lg">
+                        Browse Categories
                     </a>
 
                 </div>
 
-                <!-- Stats -->
+                <!-- Statistics -->
 
-                <div class="stats mt-5">
+                <div class="stats">
 
                     <div>
                         <h3>120+</h3>
@@ -118,19 +135,21 @@
 
                     <div>
                         <h3>500+</h3>
-                        <p>Happy Users</p>
+                        <p>Food Lovers</p>
                     </div>
 
                 </div>
 
             </div>
 
-            <div class="col-lg-6 text-center">
+            <!-- Right Image -->
+
+            <div class="col-lg-6 text-center" data-aos="fade-left">
 
                 <img
-                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"
+                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900"
                     class="img-fluid hero-image"
-                    alt="Recipe">
+                    alt="RecipeHub">
 
             </div>
 
