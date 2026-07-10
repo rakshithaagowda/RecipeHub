@@ -76,19 +76,25 @@
                 </p>
 
                 <!-- Search -->
+<form method="GET" action="{% url 'home' %}" class="mb-4">
 
-                <div class="input-group search-box mb-4">
+    <div class="input-group search-box">
 
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Search recipes, ingredients...">
+        <input
+            type="text"
+            name="q"
+            value="{{ query }}"
+            class="form-control"
+            placeholder="Search recipes, ingredients...">
 
-                    <button class="btn btn-warning">
-                        <i class="fas fa-search"></i>
-                    </button>
+        <button type="submit" class="btn btn-warning">
+            <i class="fas fa-search"></i>
+        </button>
 
-                </div>
+    </div>
+
+</form>
+               
 
                 <!-- Popular Tags -->
 
@@ -160,69 +166,66 @@
 </section>
 
 
-<!-- Featured Recipes -->
+<!-- Featured Recipes / Search Results -->
 
 <section id="featured" class="py-5 bg-light">
 
     <div class="container">
 
         <h2 class="text-center fw-bold mb-5">
-            ⭐ Featured Recipes
+
+            {% if query %}
+                🔍 Search Results for "{{ query }}"
+            {% else %}
+                ⭐ Featured Recipes
+            {% endif %}
+
         </h2>
 
         <div class="row">
 
-            {% for recipe in featured_recipes %}
+            {% if query %}
 
-            <div class="col-lg-4 col-md-6 mb-4">
+                {% for recipe in search_results %}
 
-                <div class="card recipe-card h-100">
+                <div class="col-lg-4 col-md-6 mb-4">
 
-                    <div class="card-body">
+                    <div class="card recipe-card h-100">
 
-                        <span class="badge bg-warning text-dark mb-3">
-                            {{ recipe.category }}
-                        </span>
+                        <div class="card-body">
 
-                        <h4>
-
-                            <a href="{% url 'recipe_detail' recipe.slug %}"
-                               class="text-decoration-none text-dark">
-
-                                {{ recipe.title }}
-
-                            </a>
-
-                        </h4>
-
-                        <p class="text-muted">
-                            {{ recipe.description|truncatewords:20 }}
-                        </p>
-
-                        <div class="d-flex justify-content-between mt-3">
-
-                            <span>⏱ {{ recipe.total_time }} mins</span>
-
-                            <span>🔥 {{ recipe.calories }} kcal</span>
-
-                        </div>
-
-                        <div class="mt-3">
-
-                            <span class="badge bg-success">
-                                {{ recipe.difficulty }}
+                            <span class="badge bg-warning text-dark mb-3">
+                                {{ recipe.category }}
                             </span>
 
-                        </div>
+                            <h4>
+                                <a href="{% url 'recipe_detail' recipe.slug %}"
+                                   class="text-decoration-none text-dark">
+                                    {{ recipe.title }}
+                                </a>
+                            </h4>
 
-                        <div class="mt-4">
+                            <p class="text-muted">
+                                {{ recipe.description|truncatewords:20 }}
+                            </p>
 
-                            <a href="{% url 'recipe_detail' recipe.slug %}"
-                               class="btn btn-warning w-100">
+                            <div class="d-flex justify-content-between mt-3">
+                                <span>⏱ {{ recipe.total_time }} mins</span>
+                                <span>🔥 {{ recipe.calories }} kcal</span>
+                            </div>
 
-                                View Recipe →
+                            <div class="mt-3">
+                                <span class="badge bg-success">
+                                    {{ recipe.difficulty }}
+                                </span>
+                            </div>
 
-                            </a>
+                            <div class="mt-4">
+                                <a href="{% url 'recipe_detail' recipe.slug %}"
+                                   class="btn btn-warning w-100">
+                                    View Recipe →
+                                </a>
+                            </div>
 
                         </div>
 
@@ -230,19 +233,80 @@
 
                 </div>
 
-            </div>
+                {% empty %}
 
-            {% empty %}
+                <div class="col-12 text-center">
 
-            <div class="col-12 text-center">
+                    <h4>No recipes found.</h4>
 
-                <h4>No Featured Recipes Found</h4>
+                    <p>Try another keyword.</p>
 
-                <p>Add recipes from Django Admin.</p>
+                </div>
 
-            </div>
+                {% endfor %}
 
-            {% endfor %}
+            {% else %}
+
+                {% for recipe in featured_recipes %}
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card recipe-card h-100">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-warning text-dark mb-3">
+                                {{ recipe.category }}
+                            </span>
+
+                            <h4>
+                                <a href="{% url 'recipe_detail' recipe.slug %}"
+                                   class="text-decoration-none text-dark">
+                                    {{ recipe.title }}
+                                </a>
+                            </h4>
+
+                            <p class="text-muted">
+                                {{ recipe.description|truncatewords:20 }}
+                            </p>
+
+                            <div class="d-flex justify-content-between mt-3">
+                                <span>⏱ {{ recipe.total_time }} mins</span>
+                                <span>🔥 {{ recipe.calories }} kcal</span>
+                            </div>
+
+                            <div class="mt-3">
+                                <span class="badge bg-success">
+                                    {{ recipe.difficulty }}
+                                </span>
+                            </div>
+
+                            <div class="mt-4">
+                                <a href="{% url 'recipe_detail' recipe.slug %}"
+                                   class="btn btn-warning w-100">
+                                    View Recipe →
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12 text-center">
+
+                    <h4>No Featured Recipes Found</h4>
+
+                    <p>Add recipes from Django Admin.</p>
+
+                </div>
+
+                {% endfor %}
+
+            {% endif %}
 
         </div>
 

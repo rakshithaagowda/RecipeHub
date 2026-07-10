@@ -1,14 +1,28 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Recipe, Category
+from django.db.models import Q
 
 
 def home(request):
+    query = request.GET.get("q", "")
+
     featured_recipes = Recipe.objects.filter(featured=True)[:6]
     categories = Category.objects.all()
+
+    search_results = None
+
+    if query:
+        search_results = Recipe.objects.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(ingredients__icontains=query)
+        )
 
     context = {
         "featured_recipes": featured_recipes,
         "categories": categories,
+        "query": query,
+        "search_results": search_results,
     }
 
     return render(request, "recipes/home.html", context)
