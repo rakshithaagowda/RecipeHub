@@ -1,34 +1,114 @@
 {% extends "base.html" %}
 
+{% block title %}{{ recipe.title }} | RecipeHub{% endblock %}
+
 {% block content %}
 
-<div class="container py-5">
+<div class="container py-5 mt-5">
 
-    <h1>{{ recipe.title }}</h1>
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary mb-4">
+        ← Back to Home
+    </a>
 
-    <p><strong>Category:</strong> {{ recipe.category }}</p>
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
 
-    <p>{{ recipe.description }}</p>
+        {% if recipe.hero_image %}
+            <img src="{{ recipe.hero_image.url }}"
+                 class="img-fluid"
+                 style="height:450px;object-fit:cover;"
+                 alt="{{ recipe.title }}">
+        {% else %}
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200"
+                 class="img-fluid"
+                 style="height:450px;object-fit:cover;"
+                 alt="Recipe">
+        {% endif %}
 
-    <hr>
+        <div class="card-body p-5">
 
-    <h3>Ingredients</h3>
+            <span class="badge bg-warning text-dark mb-3">
+                {{ recipe.category }}
+            </span>
 
-    <pre>{{ recipe.ingredients }}</pre>
+            <h1 class="fw-bold">
+                {{ recipe.title }}
+            </h1>
 
-    <h3>Instructions</h3>
+            <p class="text-muted fs-5">
+                {{ recipe.description }}
+            </p>
 
-    <pre>{{ recipe.instructions }}</pre>
+            <hr>
 
-    <hr>
+            <div class="row text-center mb-5">
 
-    <p>⏱ Total Time: {{ recipe.total_time }} mins</p>
+                <div class="col-md-3">
+                    <h3>⏱</h3>
+                    <strong>{{ recipe.total_time }} mins</strong>
+                    <p class="text-muted">Cooking Time</p>
+                </div>
 
-    <p>🍽 Servings: {{ recipe.servings }}</p>
+                <div class="col-md-3">
+                    <h3>🍽</h3>
+                    <strong>{{ recipe.servings }}</strong>
+                    <p class="text-muted">Servings</p>
+                </div>
 
-    <p>🔥 Calories: {{ recipe.calories }} kcal</p>
+                <div class="col-md-3">
+                    <h3>🔥</h3>
+                    <strong>{{ recipe.calories }}</strong>
+                    <p class="text-muted">Calories</p>
+                </div>
 
-    <p>⭐ Difficulty: {{ recipe.difficulty }}</p>
+                <div class="col-md-3">
+                    <h3>⭐</h3>
+                    <strong>{{ recipe.difficulty }}</strong>
+                    <p class="text-muted">Difficulty</p>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-5">
+
+                    <h3 class="mb-3">
+                        🥗 Ingredients
+                    </h3>
+
+                    <ul class="list-group">
+
+                        {% for ingredient in recipe.ingredient_list %}
+
+                        <li class="list-group-item">
+                            ✅ {{ ingredient }}
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-7">
+
+                    <h3 class="mb-3">
+                        👨‍🍳 Instructions
+                    </h3>
+
+                    <div class="border rounded-3 p-4 bg-light">
+
+                        {{ recipe.instructions|linebreaks }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

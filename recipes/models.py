@@ -76,6 +76,9 @@ class Recipe(models.Model):
     @property
     def total_time(self):
         return self.prep_time + self.cook_time
+    @property
+    def ingredient_list(self):
+        return self.ingredients.splitlines()
 
     def save(self, *args, **kwargs):
         if not self.slug:
