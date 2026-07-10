@@ -125,3 +125,74 @@ width:100%;
 }
 
 }
+/* Search */
+
+.search-box{
+
+max-width:520px;
+
+}
+
+.search-box input{
+
+height:58px;
+
+border-radius:50px 0 0 50px;
+
+border:none;
+
+padding-left:25px;
+
+}
+
+.search-box button{
+
+border-radius:0 50px 50px 0;
+
+padding:0 30px;
+
+}
+
+/* Stats */
+
+.stats{
+
+display:flex;
+
+gap:50px;
+
+}
+
+.stats h3{
+
+font-size:34px;
+
+font-weight:700;
+
+}
+
+.stats p{
+
+margin:0;
+
+opacity:.85;
+
+}
+
+@media(max-width:991px){
+
+.stats{
+
+justify-content:center;
+
+margin-top:40px;
+
+}
+
+.search-box{
+
+margin:auto;
+
+}
+
+}
