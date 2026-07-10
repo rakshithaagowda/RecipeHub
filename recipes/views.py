@@ -36,3 +36,11 @@ def recipe_detail(request, slug):
     }
 
     return render(request, "recipes/recipe_detail.html", context)
+def recipe_list(request):
+    recipes = Recipe.objects.all()
+
+    context = {
+        "recipes": recipes,
+    }
+
+    return render(request, "recipes/recipe_list.html", context)
