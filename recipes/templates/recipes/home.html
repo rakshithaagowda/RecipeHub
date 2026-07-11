@@ -335,7 +335,16 @@
 
                     <div class="card-body">
 
-                        <h5>{{ category.name }}</h5>
+                        <h5>
+
+    <a href="{% url 'category_detail' category.slug %}"
+       class="text-decoration-none text-dark">
+
+        {{ category.name }}
+
+    </a>
+
+</h5>
 
                         <p class="small text-muted">
                             {{ category.recipes.count }} Recipes

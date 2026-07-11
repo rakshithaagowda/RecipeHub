@@ -44,3 +44,18 @@ def recipe_list(request):
     }
 
     return render(request, "recipes/recipe_list.html", context)
+def category_detail(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+
+    recipes = Recipe.objects.filter(category=category)
+
+    context = {
+        "category": category,
+        "recipes": recipes,
+    }
+
+    return render(
+        request,
+        "recipes/category_detail.html",
+        context
+    )
