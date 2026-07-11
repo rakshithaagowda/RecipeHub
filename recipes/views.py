@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Recipe, Category
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -37,7 +38,13 @@ def recipe_detail(request, slug):
 
     return render(request, "recipes/recipe_detail.html", context)
 def recipe_list(request):
-    recipes = Recipe.objects.all()
+    recipe_list = Recipe.objects.all()
+
+    paginator = Paginator(recipe_list, 2)   # 6 recipes per page
+
+    page_number = request.GET.get("page")
+
+    recipes = paginator.get_page(page_number)
 
     context = {
         "recipes": recipes,

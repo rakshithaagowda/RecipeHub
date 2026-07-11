@@ -78,7 +78,104 @@
         {% endfor %}
 
     </div>
+<!-- Pagination -->
 
+{% if recipes.has_other_pages %}
+
+<nav class="mt-5">
+
+    <ul class="pagination justify-content-center">
+
+        {% if recipes.has_previous %}
+
+        <li class="page-item">
+
+            <a class="page-link"
+               href="?page={{ recipes.previous_page_number }}">
+
+                ← Previous
+
+            </a>
+
+        </li>
+
+        {% else %}
+
+        <li class="page-item disabled">
+
+            <span class="page-link">
+
+                ← Previous
+
+            </span>
+
+        </li>
+
+        {% endif %}
+
+        {% for num in recipes.paginator.page_range %}
+
+            {% if recipes.number == num %}
+
+                <li class="page-item active">
+
+                    <span class="page-link">
+
+                        {{ num }}
+
+                    </span>
+
+                </li>
+
+            {% else %}
+
+                <li class="page-item">
+
+                    <a class="page-link"
+                       href="?page={{ num }}">
+
+                        {{ num }}
+
+                    </a>
+
+                </li>
+
+            {% endif %}
+
+        {% endfor %}
+
+        {% if recipes.has_next %}
+
+        <li class="page-item">
+
+            <a class="page-link"
+               href="?page={{ recipes.next_page_number }}">
+
+                Next →
+
+            </a>
+
+        </li>
+
+        {% else %}
+
+        <li class="page-item disabled">
+
+            <span class="page-link">
+
+                Next →
+
+            </span>
+
+        </li>
+
+        {% endif %}
+
+    </ul>
+
+</nav>
+
+{% endif %}
 </div>
 
 {% endblock %}
