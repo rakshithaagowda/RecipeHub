@@ -40,16 +40,17 @@ def recipe_detail(request, slug):
 def recipe_list(request):
     recipe_list = Recipe.objects.all()
 
-    # Get all categories for dropdown
     categories = Category.objects.all()
 
-    # Get selected category
     category_slug = request.GET.get("category")
+    difficulty = request.GET.get("difficulty")
 
     if category_slug:
         recipe_list = recipe_list.filter(category__slug=category_slug)
 
-    # Pagination
+    if difficulty:
+        recipe_list = recipe_list.filter(difficulty=difficulty)
+
     paginator = Paginator(recipe_list, 6)
 
     page_number = request.GET.get("page")
@@ -59,6 +60,7 @@ def recipe_list(request):
         "recipes": recipes,
         "categories": categories,
         "selected_category": category_slug,
+        "selected_difficulty": difficulty,
     }
 
     return render(request, "recipes/recipe_list.html", context)

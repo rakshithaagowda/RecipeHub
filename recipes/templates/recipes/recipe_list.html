@@ -9,29 +9,53 @@
     <h1 class="text-center fw-bold mb-5">
         🍽️ All Recipes
     </h1>
-<form method="GET" class="row mb-5">
+<form method="GET" class="row align-items-end g-3 mb-5">
 
+    <!-- Category -->
     <div class="col-md-4">
+        <label class="form-label fw-semibold">Category</label>
 
-        <select name="category" class="form-select" onchange="this.form.submit()">
-
+        <select name="category" class="form-select">
             <option value="">All Categories</option>
 
             {% for category in categories %}
-
                 <option value="{{ category.slug }}"
-                    {% if selected_category == category.slug %}
-                        selected
-                    {% endif %}>
-
+                    {% if selected_category == category.slug %}selected{% endif %}>
                     {{ category.name }}
-
                 </option>
-
             {% endfor %}
-
         </select>
+    </div>
 
+    <!-- Difficulty -->
+    <div class="col-md-4">
+        <label class="form-label fw-semibold">Difficulty</label>
+
+        <select name="difficulty" class="form-select">
+            <option value="">All Difficulties</option>
+
+            <option value="Easy"
+                {% if selected_difficulty == "Easy" %}selected{% endif %}>
+                Easy
+            </option>
+
+            <option value="Medium"
+                {% if selected_difficulty == "Medium" %}selected{% endif %}>
+                Medium
+            </option>
+
+            <option value="Hard"
+                {% if selected_difficulty == "Hard" %}selected{% endif %}>
+                Hard
+            </option>
+        </select>
+    </div>
+
+    <!-- Button -->
+    <div class="col-md-4 d-grid">
+        <button type="submit" class="btn btn-warning">
+            Apply Filters
+        </button>
     </div>
 
 </form>
