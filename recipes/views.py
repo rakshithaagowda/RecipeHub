@@ -32,9 +32,16 @@ def home(request):
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
 
+    related_recipes = Recipe.objects.filter(
+        category=recipe.category
+    ).exclude(id=recipe.id)[:3]
+
     context = {
         "recipe": recipe,
+        "related_recipes": related_recipes,
     }
+
+    return render(request, "recipes/recipe_detail.html", context)
 
     return render(request, "recipes/recipe_detail.html", context)
 def recipe_list(request):
