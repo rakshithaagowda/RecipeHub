@@ -26,7 +26,8 @@ RecipeHub is a recipe management web application built using **Python** and **Dj
 
 ### 🍽️ All Recipes
 
-![All Recipes](screenshots/recipes.png)
+![All Recipes] ![Uploading all recipes.png…]()
+
 
 ---
 
