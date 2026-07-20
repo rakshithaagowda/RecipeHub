@@ -43,7 +43,7 @@ def recipe_detail(request, slug):
 
     return render(request, "recipes/recipe_detail.html", context)
 
-    return render(request, "recipes/recipe_detail.html", context)
+    
 def recipe_list(request):
     recipe_list = Recipe.objects.all()
 

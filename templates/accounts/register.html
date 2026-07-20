@@ -1,12 +1,80 @@
-<h2>Register</h2>
+{% extends "base.html" %}
+{% load static %}
 
-<form method="POST">
+{% block title %}Register | RecipeHub{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'recipes/css/auth.css' %}">
+
+<div class="container">
+
+    <div class="card auth-card">
+
+        <div class="auth-header">
+
+            <h2>🍽️ RecipeHub</h2>
+
+            <p>Join our community of food lovers!</p>
+
+        </div>
+
+        <div class="auth-body">
+
+           <form method="POST">
+
     {% csrf_token %}
 
-    {{ form.as_p }}
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <div class="text-danger small mt-1">
+                {{ form.username.errors }}
+            </div>
+        {% endif %}
+    </div>
 
-    <button type="submit">
-        Register
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+            <div class="text-danger small mt-1">
+                {{ form.password1.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+            <div class="text-danger small mt-1">
+                {{ form.password2.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-auth">
+        Create Account
     </button>
 
-</form>
+</form> 
+
+            <div class="auth-footer">
+
+                Already have an account?
+
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
