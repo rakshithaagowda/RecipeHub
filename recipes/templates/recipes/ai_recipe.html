@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}AI Recipe Assistant{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold">
+            🤖 AI Recipe Assistant
+        </h1>
+
+        <p class="text-muted">
+            Enter the ingredients you have and let AI create a recipe.
+        </p>
+
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-4">
+
+            <textarea
+                name="ingredients"
+                class="form-control"
+                rows="4"
+                placeholder="Example: rice, egg, onion, tomato"></textarea>
+
+        </div>
+
+        <button class="btn btn-warning btn-lg">
+
+            Generate Recipe
+
+        </button>
+
+    </form>
+
+    {% if recipe %}
+
+    <div class="card mt-5 shadow">
+
+        <div class="card-body">
+
+            <h3 class="mb-4">
+                🍽️ AI Suggested Recipe
+            </h3>
+
+            <pre style="white-space:pre-wrap;font-family:Poppins;">
+{{ recipe }}
+            </pre>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -11,12 +11,6 @@ db.sqlite3
 media/
 staticfiles/
 
-# Environment Variables
 .env
-
-# VS Code
-.vscode/
-
-# OS Files
-.DS_Store
-Thumbs.db
+__pycache__/
+*.pyc

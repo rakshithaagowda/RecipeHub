@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Recipe, Category
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.contrib import messages
+from .gemini_service import generate_recipe
 
 
 def home(request):
@@ -85,4 +87,27 @@ def category_detail(request, slug):
         request,
         "recipes/category_detail.html",
         context
+    )
+def ai_recipe(request):
+
+    recipe = None
+
+    if request.method == "POST":
+
+        ingredients = request.POST.get("ingredients")
+
+        if ingredients:
+
+            recipe = generate_recipe(ingredients)
+
+        else:
+
+            messages.error(request, "Please enter some ingredients.")
+
+    return render(
+        request,
+        "recipes/ai_recipe.html",
+        {
+            "recipe": recipe
+        }
     )
