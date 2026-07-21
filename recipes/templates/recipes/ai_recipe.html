@@ -1,56 +1,110 @@
 {% extends "base.html" %}
 
-{% block title %}AI Recipe Assistant{% endblock %}
+{% block title %}AI Recipe Assistant | RecipeHub{% endblock %}
 
 {% block content %}
 
-<div class="container py-5">
+<div style="
+background: linear-gradient(
+135deg,
+#ff6b35 0%,
+#ff8f1f 45%,
+#ffb347 100%
+);
+min-height:100vh;
+padding:60px 0;
+">
+
+<div class="container">
 
     <div class="text-center mb-5">
 
-        <h1 class="fw-bold">
-            🤖 AI Recipe Assistant
+        <h1 class="display-4 fw-bold text-dark">
+            🍽️ AI Recipe Assistant
         </h1>
 
-        <p class="text-muted">
-            Enter the ingredients you have and let AI create a recipe.
+        <p class="lead text-dark">
+            Turn your available ingredients into a delicious recipe with
+            <strong>Google Gemini AI</strong>.
         </p>
 
     </div>
 
-    <form method="POST">
+    <div class="card shadow-lg border-0 rounded-4 mx-auto"
+         style="max-width:850px;">
 
-        {% csrf_token %}
+        <div class="card-header text-white text-center py-4"
+             style="background:#5b3a29;">
 
-        <div class="mb-4">
-
-            <textarea
-                name="ingredients"
-                class="form-control"
-                rows="4"
-                placeholder="Example: rice, egg, onion, tomato"></textarea>
+            <h3 class="mb-0">
+                ✨ Generate Your Recipe
+            </h3>
 
         </div>
 
-        <button class="btn btn-warning btn-lg">
+        <div class="card-body p-4">
 
-            Generate Recipe
+            <form method="POST">
 
-        </button>
+                {% csrf_token %}
 
-    </form>
+                <div class="mb-4">
+
+                    <label class="form-label fw-semibold">
+
+                        Ingredients
+
+                    </label>
+
+                  <textarea
+                name="ingredients"
+                class="form-control"
+                rows="5"
+                placeholder="Example: Rice, Egg, Onion, Tomato, Cheese"
+                required>{{ ingredients|default:'' }}</textarea> 
+
+                </div>
+
+                <div class="text-center">
+
+                    <button type="submit"
+                            class="btn btn-warning btn-lg px-5 rounded-pill">
+
+                        ✨ Generate Recipe
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
     {% if recipe %}
 
-    <div class="card mt-5 shadow">
+    <div class="card shadow-lg border-0 rounded-4 mt-5 mx-auto"
+         style="max-width:850px;">
 
-        <div class="card-body">
+        <div class="card-header text-white py-3"
+             style="background:#5b3a29;">
 
-            <h3 class="mb-4">
+            <h3 class="mb-0">
                 🍽️ AI Suggested Recipe
             </h3>
 
-            <pre style="white-space:pre-wrap;font-family:Poppins;">
+        </div>
+
+        <div class="card-body p-4">
+
+            <pre style="
+white-space:pre-wrap;
+font-family:'Poppins',sans-serif;
+font-size:16px;
+line-height:1.8;
+margin:0;
+">
 {{ recipe }}
             </pre>
 
@@ -59,6 +113,8 @@
     </div>
 
     {% endif %}
+
+</div>
 
 </div>
 

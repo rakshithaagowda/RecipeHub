@@ -1,9 +1,14 @@
 from django.shortcuts import render, get_object_or_404
+
 from .models import Recipe, Category
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
 from .gemini_service import generate_recipe
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from .serializers import RecipeSerializer, CategorySerializer
 
 
 def home(request):
@@ -91,23 +96,53 @@ def category_detail(request, slug):
 def ai_recipe(request):
 
     recipe = None
+    ingredients = ""
 
     if request.method == "POST":
 
         ingredients = request.POST.get("ingredients")
 
-        if ingredients:
+    if ingredients:
 
-            recipe = generate_recipe(ingredients)
+        recipe = generate_recipe(ingredients)
 
-        else:
+    else:
 
-            messages.error(request, "Please enter some ingredients.")
+        messages.error(request, "Please enter some ingredients.")
 
     return render(
-        request,
-        "recipes/ai_recipe.html",
-        {
-            "recipe": recipe
-        }
-    )
+    request,
+    "recipes/ai_recipe.html",
+    {
+        "recipe": recipe,
+        "ingredients": ingredients
+    }
+)
+@api_view(["GET"])
+def api_recipes(request):
+
+    recipes = Recipe.objects.all()
+
+    serializer = RecipeSerializer(recipes, many=True)
+
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def api_categories(request):
+
+    categories = Category.objects.all()
+
+    serializer = CategorySerializer(categories, many=True)
+
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def api_recipe_detail(request, slug):
+
+    recipe = get_object_or_404(Recipe, slug=slug)
+
+    serializer = RecipeSerializer(recipe)
+
+    return Response(serializer.data)
