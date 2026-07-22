@@ -28,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3b83hej@u=8%%s8xj292(en$k)^pk8$)oq_ey3z1%wqyep6feb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    ".onrender.com",
+    "recipehub-oeqm.onrender.com",
 ]
 
 
@@ -84,7 +84,6 @@ WSGI_APPLICATION = 'recipehub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
 DATABASES = {
     "default": dj_database_url.config(
         default=os.getenv("DATABASE_URL")
