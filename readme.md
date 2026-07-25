@@ -7,7 +7,6 @@ RecipeHub is a modern recipe management web application built with **Python** an
 ## 🌐 Live Demo
 
 **Live Website:** https://recipehub-oeqm.onrender.com
-📂 **GitHub Repository:** https://github.com/rakshithaagowda/RecipeHub
 
 ---
 
@@ -194,41 +193,6 @@ DEBUG=True
 * 🔐 Login
 * 📝 Register
 * ⚙ Admin Dashboard
-
-## 📸 Screenshots
-
-### 🏠 Home Page
-![Home](screenshots/home.png)
-
----
-
-### ⭐ Featured Recipes
-![Featured Recipes](screenshots/featured-recipes.png)
-
----
-
-### 📂 Categories
-![Categories](screenshots/categories.png)
-
----
-
-### 🍽️ All Recipes
-![All Recipes](screenshots/all-recipes.png)
-
----
-
-### 📖 Recipe Details
-![Recipe Detail](screenshots/recipe-detail.png)
-
----
-
-### 🤖 AI Recipe Assistant
-![AI Recipe Assistant](screenshots/ai-recipe.png)
-
----
-
-### 🔐 Login
-![Login](screenshots/login.png)
 
 ---
 
