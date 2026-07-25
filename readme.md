@@ -7,6 +7,7 @@ RecipeHub is a modern recipe management web application built with **Python** an
 ## 🌐 Live Demo
 
 **Live Website:** https://recipehub-oeqm.onrender.com
+📂 **GitHub Repository:** https://github.com/rakshithaagowda/RecipeHub
 
 ---
 
@@ -33,7 +34,7 @@ RecipeHub is a modern recipe management web application built with **Python** an
 
 RecipeHub includes an AI-powered recipe generator using **Google Gemini 2.5 Flash**.
 
-Simply enter the ingredients you have, and the AI generates a complete recipe with cooking instructions.
+Simply enter the ingredients you have available, and the AI generates a complete recipe with ingredients, cooking instructions, and useful cooking tips.
 
 Example:
 
@@ -162,6 +163,15 @@ python manage.py runserver
 ```
 
 ---
+## 🔑 Environment Variables
+
+Create a `.env` file in the project root and add:
+
+```env
+SECRET_KEY=your_django_secret_key
+GEMINI_API_KEY=your_google_gemini_api_key
+DEBUG=True
+```
 
 ## 🔗 API Endpoints
 
@@ -185,19 +195,56 @@ python manage.py runserver
 * 📝 Register
 * ⚙ Admin Dashboard
 
-(Add screenshots here.)
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](screenshots/home.png)
+
+---
+
+### ⭐ Featured Recipes
+![Featured Recipes](screenshots/featured-recipes.png)
+
+---
+
+### 📂 Categories
+![Categories](screenshots/categories.png)
+
+---
+
+### 🍽️ All Recipes
+![All Recipes](screenshots/all-recipes.png)
+
+---
+
+### 📖 Recipe Details
+![Recipe Detail](screenshots/recipe-detail.png)
+
+---
+
+### 🤖 AI Recipe Assistant
+![AI Recipe Assistant](screenshots/ai-recipe.png)
+
+---
+
+### 🔐 Login
+![Login](screenshots/login.png)
+
+---
+
+### 📝 Register
+![Register](screenshots/register.png)
 
 ---
 
 ## 📌 Future Enhancements
 
-* ❤️ Favorite Recipes
-* ⭐ Recipe Ratings & Reviews
-* 📤 User Recipe Uploads
-* 📧 Password Reset via Email
-* 🧾 Nutrition Information
-* 🖼 AI Generated Recipe Images
-
+- ❤️ Favorite Recipes
+- ⭐ Ratings & Reviews
+- 👨‍🍳 User Recipe Uploads
+- 📧 Password Reset via Email
+- 🥗 Nutrition Information
+- 📱 Progressive Web App (PWA)
 ---
 
 ## 👩‍💻 Author
